@@ -6,6 +6,16 @@
     box-sizing: border-box;
 }
 
+/*::before and ::after are pseudo-elements*/
+*, ::before, ::after{
+    box-sizing: inherit;
+  }
+
+/*Browsers can apply default margins, so I need to reset the box model*/
+html{
+    box-sizing: border-box;
+  }
+
 body{
     background: #fcfcfc;
     font-family: sans-serif;
@@ -30,3 +40,79 @@ body{
  a{
     color:#fff;
   }
+
+  /*id selector*/
+#piano{
+    background-color: #00471b;
+    width: 992px;
+    height: 290px;
+    margin: 80px auto;
+    /*moves the keys into position*/
+    padding: 90px 20px 0 20px;
+    /*The img element needs its parent to have a position set 
+    as a P.O.R*/
+    position: relative;
+    border-radius: 10px;
+}
+
+/*class selector*/
+.keys {
+    background-color:#040404;
+    width: 949px;
+    height: 180px;
+    padding-left: 2px;
+    /*Keys collapse when browser is smaller than 768px, 
+    overflow takes care of it. Hides any element pushed outside 
+    the set width*/
+    overflow:hidden;
+  }
+
+  /*class selector that styles the actual keyss*/
+  .key{
+    background-color: #ffffff;
+    position: relative;
+    width: 41px;
+    height: 175px;
+    margin: 2px;
+    float: left;
+    border-radius: 0 0 3px 3px;
+  }
+
+  /*Uses pseduo-selectors to create black keys */
+  .key.black--key::after {
+    background-color: #1d1e22;
+    content: "";
+    position: absolute;
+    left: -18px;
+    width: 30px;
+    height: 100px;
+    border-radius: 0 0 3px 3px;
+  }
+
+.logo {
+    width: 300px;
+    position: absolute;
+    top:23px;
+  }
+
+  /*Makes it responsive*/
+@media (max-width:768px) {
+    #piano{
+        width:358px;
+    }
+    .keys{
+        width: 318px;
+    }
+    .logo{
+        width: 210px;
+      }
+}
+
+@media (min-width: 769px) and (max-width: 1199px){
+    #piano{
+        width: 675px;
+    }
+    .keys{
+        width:633px;
+    }
+}
